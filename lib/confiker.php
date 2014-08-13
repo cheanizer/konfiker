@@ -6,7 +6,7 @@ Class Confiker
 	private $_list = array();
 	private $_file;
 	private $_file_config_name = "config.cfg";
-	private $_absolute_path_folder = "/home/cheanizer/public_html/stando/wisata_tracker/config/";
+	private $_absolute_path_folder = "[your absolute path folder]";
 	private $_type = array(
 			'1' => array(
 					'name' => 'Text',
