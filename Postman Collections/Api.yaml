@@ -54,6 +54,41 @@ paths:
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
+  /user:
+    get:
+      description: 'TODO: Add Description'
+      summary: List
+      tags:
+      - User
+      operationId: UserGet
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /user
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: List
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
   /auth/login:
     post:
       description: >
@@ -291,18 +326,93 @@ paths:
         in: formData
         required: true
         type: string
-        description: ''
+        description: active or not
       - name: name
         in: formData
         required: true
         type: string
-        description: ''
+        description: name of contact planner
       - name: code
         in: formData
         required: true
         type: string
-        description: ''
+        description: contact planner code (random string)
       - name: parameters
+        in: formData
+        required: true
+        type: string
+        description: parameters (json)
+      - name: interval_type
+        in: formData
+        required: true
+        type: string
+        description: interval running (daily,weekly,monthly,custom)
+      - name: activity_id
+        in: formData
+        required: true
+        type: string
+        description: activity_id | required
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /contactplanner/create
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: is_active=1&name=SMS Reminder KPB 1&code=s3f34fd3221244ffbhrrsPP&parameters={"created_date":{"operator":"gt","value":"2018-08-27"}}&interval_type=daily&activity_id=
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Create
+        x-testDescription: Create Contact Planner
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /activity/create:
+    post:
+      description: 'TODO: Add Description'
+      summary: Create
+      tags:
+      - Activity
+      operationId: ActivityCreatePost
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: activity_type
+        in: formData
+        required: true
+        type: string
+        description: type activity (sms,call,email)
+      - name: is_enabled
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: sms_script
+        in: formData
+        required: true
+        type: string
+        description: isi dari sms kpb.
+      - name: call_script
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: email_script
         in: formData
         required: true
         type: string
@@ -315,10 +425,10 @@ paths:
       x-unitTests:
       - request:
           method: POST
-          uri: /contactplanner/create
+          uri: /activity/create
           headers:
             Content-Type: application/x-www-form-urlencoded
-          body: is_active=1&name=SMS Reminder KPB 1&code=s3f34fd3221244ffbhrrsPP&parameters={"created_date":{"operator":"gt","value":"2018-08-27"}}
+          body: activity_type=sms&is_enabled=1&sms_script=hi {name}, ini adalah pemberitahuan service kpb anda&call_script=&email_script=
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: NONE
@@ -329,7 +439,77 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: Create
-        x-testDescription: Create Contact Planner
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /branch:
+    get:
+      description: Get List BMS branch
+      summary: List
+      tags:
+      - Branch
+      operationId: BranchGet
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /branch
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: List
+        x-testDescription: Get List BMS branch
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /commonbms/product:
+    get:
+      description: Endpoint for get all honda product from bms database.
+      summary: Product
+      tags:
+      - Common
+      operationId: CommonbmsProductGet
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /commonbms/product
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Product
+        x-testDescription: Endpoint for get all honda product from bms database.
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
