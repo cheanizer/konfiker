@@ -310,6 +310,41 @@ paths:
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
+  /contactplanner:
+    get:
+      description: 'TODO: Add Description'
+      summary: List
+      tags:
+      - ContactPlanner
+      operationId: ContactplannerGet
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /contactplanner
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: List
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
   /contactplanner/create:
     post:
       description: Create Contact Planner
@@ -352,6 +387,16 @@ paths:
         required: true
         type: string
         description: activity_id | required
+      - name: backdate
+        in: formData
+        required: true
+        type: string
+        description: backdate, tanggal query akan start berlaku.
+      - name: week_days_interval
+        in: formData
+        required: true
+        type: string
+        description: ''
       responses:
         200:
           description: ''
@@ -363,7 +408,7 @@ paths:
           uri: /contactplanner/create
           headers:
             Content-Type: application/x-www-form-urlencoded
-          body: is_active=1&name=SMS Reminder KPB 1&code=s3f34fd3221244ffbhrrsPP&parameters={"created_date":{"operator":"gt","value":"2018-08-27"}}&interval_type=daily&activity_id=
+          body: is_active=1&name=SMS Reminder KPB 1&code=s3f34fd3221244ffbhrrsPP&parameters={"created_date":{"operator":"gt","value":"2018-08-27"}}&interval_type=daily&activity_id=0&backdate=2018-07-01&week_days_interval=sun,mon,thu
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: NONE
@@ -375,6 +420,56 @@ paths:
         x-testEnabled: true
         x-testName: Create
         x-testDescription: Create Contact Planner
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /contactplanner/update:
+    post:
+      description: 'TODO: Add Description'
+      summary: Update
+      tags:
+      - ContactPlanner
+      operationId: ContactplannerUpdatePost
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: id
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: activity_id
+        in: formData
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /contactplanner/update
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: id=4&activity_id=1
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Update
+        x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
