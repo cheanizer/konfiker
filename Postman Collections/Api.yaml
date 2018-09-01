@@ -357,6 +357,11 @@ paths:
       consumes:
       - application/x-www-form-urlencoded
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: is_active
         in: formData
         required: true
@@ -367,11 +372,6 @@ paths:
         required: true
         type: string
         description: name of contact planner
-      - name: code
-        in: formData
-        required: true
-        type: string
-        description: contact planner code (random string)
       - name: parameters
         in: formData
         required: true
@@ -397,6 +397,11 @@ paths:
         required: true
         type: string
         description: ''
+      - name: branches
+        in: formData
+        required: true
+        type: string
+        description: ''
       responses:
         200:
           description: ''
@@ -408,7 +413,7 @@ paths:
           uri: /contactplanner/create
           headers:
             Content-Type: application/x-www-form-urlencoded
-          body: is_active=1&name=SMS Reminder KPB 1&code=s3f34fd3221244ffbhrrsPP&parameters={"created_date":{"operator":"gt","value":"2018-08-27"}}&interval_type=daily&activity_id=0&backdate=2018-07-01&week_days_interval=sun,mon,thu
+          body: is_active=1&name=SMS Reminder KPB 1&parameters={"tgl_stnk":{"operator":"&gt;=","value":20,"name":"Tanggal STNK"}}&interval_type=daily&activity_id=6&backdate=2018-07-01&week_days_interval=sun,mon,thu&branches=[1,2,3]
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: NONE
@@ -437,6 +442,11 @@ paths:
       consumes:
       - application/x-www-form-urlencoded
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: id
         in: formData
         required: true
