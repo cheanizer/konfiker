@@ -1,698 +1,658 @@
-swagger: '2.0'
-info:
-  version: '1.0'
-  title: Api CCMS
-  description: 'TODO: Add Description'
-host: example.com
-basePath: /
-securityDefinitions:
-  auth:
-    type: oauth2
-    flow: implicit
-    authorizationUrl: http://example.com
-    scopes: {}
-    x-skip-client-authentication: false
-schemes:
-- http
-consumes:
-- application/json
-produces:
-- application/json
-paths:
-  /user/me:
-    get:
-      description: User Me
-      summary: Me
-      tags:
-      - User
-      operationId: UserMeGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /user/me
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Me
-        x-testDescription: User Me
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /user:
-    get:
-      description: 'TODO: Add Description'
-      summary: List
-      tags:
-      - User
-      operationId: UserGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /user
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: List
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /auth/login:
-    post:
-      description: >
-        Login
-      summary: Login
-      tags:
-      - Auth
-      operationId: AuthLoginPost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: email
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: password
-        in: formData
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /auth/login
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: email=sty.adhi@gmail.com&password=1234
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Login
-        x-testDescription: >
-          Login
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /customerbms:
-    get:
-      description: 'TODO: Add Description'
-      summary: List
-      tags:
-      - CustomerBMS
-      operationId: CustomerbmsGet
-      produces:
-      - application/json
-      parameters:
-      - name: page
-        in: query
-        required: true
-        type: integer
-        format: int32
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /customerbms?page=1
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: List
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /customerbms/detail:
-    get:
-      description: 'TODO: Add Description'
-      summary: Detail
-      tags:
-      - CustomerBMS
-      operationId: CustomerbmsDetailGet
-      produces:
-      - application/json
-      parameters:
-      - name: id
-        in: query
-        required: true
-        type: integer
-        format: int32
-        description: ''
-      - name: includes
-        in: query
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /customerbms/detail?id=1&includes=identities,kelurahan,kecamatan,kabupaten,privinsi,phone
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Detail
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /vehiclebms:
-    get:
-      description: 'TODO: Add Description'
-      summary: List
-      tags:
-      - VehicleBms
-      operationId: VehiclebmsGet
-      produces:
-      - application/json
-      parameters:
-      - name: customer_id
-        in: query
-        required: true
-        type: integer
-        format: int32
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /vehiclebms?customer_id=9831
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: List
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /vehiclebms/detail:
-    get:
-      description: 'TODO: Add Description'
-      summary: Detail
-      tags:
-      - VehicleBms
-      operationId: VehiclebmsDetailGet
-      produces:
-      - application/json
-      parameters:
-      - name: id
-        in: query
-        required: true
-        type: integer
-        format: int32
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /vehiclebms/detail?id=1
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Detail
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /contactplanner:
-    get:
-      description: 'TODO: Add Description'
-      summary: List
-      tags:
-      - ContactPlanner
-      operationId: ContactplannerGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /contactplanner
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: List
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /contactplanner/create:
-    post:
-      description: Create Contact Planner
-      summary: Create
-      tags:
-      - ContactPlanner
-      operationId: ContactplannerCreatePost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: is_active
-        in: formData
-        required: true
-        type: string
-        description: active or not
-      - name: name
-        in: formData
-        required: true
-        type: string
-        description: name of contact planner
-      - name: parameters
-        in: formData
-        required: true
-        type: string
-        description: parameters (json)
-      - name: interval_type
-        in: formData
-        required: true
-        type: string
-        description: interval running (daily,weekly,monthly,custom)
-      - name: activity_id
-        in: formData
-        required: true
-        type: string
-        description: activity_id | required
-      - name: backdate
-        in: formData
-        required: true
-        type: string
-        description: backdate, tanggal query akan start berlaku.
-      - name: week_days_interval
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: branches
-        in: formData
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /contactplanner/create
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: is_active=1&name=SMS Reminder KPB 1&parameters={"tgl_stnk":{"operator":"&gt;=","value":20,"name":"Tanggal STNK"}}&interval_type=daily&activity_id=6&backdate=2018-07-01&week_days_interval=sun,mon,thu&branches=[1,2,3]
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Create
-        x-testDescription: Create Contact Planner
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /contactplanner/update:
-    post:
-      description: 'TODO: Add Description'
-      summary: Update
-      tags:
-      - ContactPlanner
-      operationId: ContactplannerUpdatePost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: id
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: activity_id
-        in: formData
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /contactplanner/update
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: id=4&activity_id=1
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Update
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /activity/create:
-    post:
-      description: 'TODO: Add Description'
-      summary: Create
-      tags:
-      - Activity
-      operationId: ActivityCreatePost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: activity_type
-        in: formData
-        required: true
-        type: string
-        description: type activity (sms,call,email)
-      - name: is_enabled
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: sms_script
-        in: formData
-        required: true
-        type: string
-        description: isi dari sms kpb.
-      - name: call_script
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: email_script
-        in: formData
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /activity/create
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: activity_type=sms&is_enabled=1&sms_script=hi {name}, ini adalah pemberitahuan service kpb anda&call_script=&email_script=
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Create
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /activity/detail:
-    get:
-      description: 'TODO: Add Description'
-      summary: Detail
-      tags:
-      - Activity
-      operationId: ActivityDetailGet
-      produces:
-      - application/json
-      parameters:
-      - name: id
-        in: query
-        required: true
-        type: integer
-        format: int32
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /activity/detail?id=1
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Detail
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /activity:
-    get:
-      description: 'TODO: Add Description'
-      summary: List
-      tags:
-      - Activity
-      operationId: ActivityGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /activity
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: List
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /branch:
-    get:
-      description: Get List BMS branch
-      summary: List
-      tags:
-      - Branch
-      operationId: BranchGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /branch
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: List
-        x-testDescription: Get List BMS branch
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /commonbms/product:
-    get:
-      description: Endpoint for get all honda product from bms database.
-      summary: Product
-      tags:
-      - Common
-      operationId: CommonbmsProductGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /commonbms/product
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Product
-        x-testDescription: Endpoint for get all honda product from bms database.
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
+{
+  "info": {
+    "_postman_id": "2460438-464c94c0-f01a-4837-bdad-b110985553be",
+    "name": "Api CCMS",
+    "description": "list of functionality request of CCMS application\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "2460438-00e90386-0977-4be8-9369-80f08e54a0e6",
+      "name": "User",
+      "description": "All user related function",
+      "item": [
+        {
+          "_postman_id": "2460438-751644ba-d2fd-46a9-a770-1f65982afea0",
+          "name": "Me",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "{{url}}user/me",
+            "description": "Get User Logged In info"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-95e582cd-3ded-49fb-9b6c-00ce079fe145",
+          "name": "List",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "{{url}}user"
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "bb4e3fd9-e9c7-4c8b-8711-a55b275ec3af",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "6048a038-a501-4549-81b3-e565a8fd25fe",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_postman_id": "2460438-5a0738cd-eb2f-4aa4-a839-4f9244724a32",
+      "name": "Auth",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2460438-afafcddc-bc23-406e-bdad-3b330cd2cdc8",
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4ab4375c-3541-40bf-b2fb-51cc6f9366df",
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "postman.setEnvironmentVariable('token',jsonData.token);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "sty.adhi@gmail.com",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "1234",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{url}}auth/login",
+            "description": "Login\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "2460438-7dd7fa77-e6de-43e0-8096-f8d29ee3bbaa",
+      "name": "CustomerBMS",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2460438-50dba317-c053-4c39-a6e9-cd1c33ae7361",
+          "name": "List",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{url}}customerbms?page=1&data_sumber=h2",
+              "host": [
+                "{{url}}customerbms"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "equals": true
+                },
+                {
+                  "key": "data_sumber",
+                  "value": "h2",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-e2337c08-6fe1-4a48-81d2-fbf9fd498c8e",
+          "name": "Detail",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{url}}customerbms/detail?id=1&includes=identities,kelurahan,kecamatan,kabupaten,privinsi,phone",
+              "host": [
+                "{{url}}customerbms"
+              ],
+              "path": [
+                "detail"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "equals": true,
+                  "description": "id customer"
+                },
+                {
+                  "key": "includes",
+                  "value": "identities,kelurahan,kecamatan,kabupaten,privinsi,phone",
+                  "equals": true,
+                  "description": "(optional includes)"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-84a61724-2df8-40ec-bf66-91470d29e503",
+          "name": "EditPrimaryPhone",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "id",
+                  "value": "12",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "phone_id",
+                  "value": "145444",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{url}}customerbms/editprimary"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-365d5581-6a81-4e97-ad9f-726928a42475",
+          "name": "Preview Target",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{url}}contactplanner/previewTarget?plan_id=1",
+              "host": [
+                "{{url}}contactplanner"
+              ],
+              "path": [
+                "previewTarget"
+              ],
+              "query": [
+                {
+                  "key": "plan_id",
+                  "value": "1",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "2460438-9529e816-883e-4050-8de2-d669f2b8aaec",
+      "name": "VehicleBms",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2460438-84aef926-e5e1-4e7c-abf0-56b0eadb7ae2",
+          "name": "List",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{url}}vehiclebms?customer_id=9831",
+              "host": [
+                "{{url}}vehiclebms"
+              ],
+              "query": [
+                {
+                  "key": "customer_id",
+                  "value": "9831",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-c916e9d5-b0fe-489c-8c40-6f3d2ba22289",
+          "name": "Detail",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{url}}vehiclebms/detail?id=1",
+              "host": [
+                "{{url}}vehiclebms"
+              ],
+              "path": [
+                "detail"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "2460438-a245ede1-ef35-4c3b-8a56-5dfee70a52ed",
+      "name": "ContactPlanner",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2460438-3f27289b-168e-4964-96f6-971a97a4a2e2",
+          "name": "List",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "{{url}}contactplanner"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-0a8f7241-e6f6-48f7-a6ab-c14dd1f62beb",
+          "name": "Create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "is_active",
+                  "value": "1",
+                  "description": "active or not",
+                  "type": "text"
+                },
+                {
+                  "key": "name",
+                  "value": "SMS Reminder KPB 1",
+                  "description": "name of contact planner",
+                  "type": "text"
+                },
+                {
+                  "key": "code",
+                  "value": "s3f34fd3221244ffbhrrsPP",
+                  "description": "contact planner code (random string)",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "parameters",
+                  "value": "{\"tgl_stnk\": {\"operator\": \"gte\",\"value\": 20,\"name\":\"Tanggal STNK\"}}",
+                  "description": "parameters (json)\noperator : [gte/gt/e/lte/lt]",
+                  "type": "text"
+                },
+                {
+                  "key": "interval_type",
+                  "value": "daily",
+                  "description": "interval running (daily,weekly,monthly,custom)",
+                  "type": "text"
+                },
+                {
+                  "key": "activity_id",
+                  "value": "6",
+                  "description": "activity_id | required",
+                  "type": "text"
+                },
+                {
+                  "key": "backdate",
+                  "value": "90",
+                  "description": "jumlah hari, backdate, tanggal query akan start berlaku. ",
+                  "type": "text"
+                },
+                {
+                  "key": "week_days_interval",
+                  "value": "sun,mon,thu",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "branches",
+                  "value": "[1,2,3]",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{url}}contactplanner/create",
+            "description": "Create Contact Planner"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-3dfe1d90-6644-427f-a38e-5495bbaffbb8",
+          "name": "Update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "id",
+                  "value": "4",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "activity_id",
+                  "value": "1",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{url}}contactplanner/update"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "2460438-3ee3ec59-f2d3-41b6-9c4b-1f61dc61f645",
+      "name": "Activity",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2460438-2b4bf196-8c19-4f2f-a625-eee5ca49e654",
+          "name": "Create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "activity_type",
+                  "value": "sms",
+                  "description": "type activity (sms,call,email)",
+                  "type": "text"
+                },
+                {
+                  "key": "is_enabled",
+                  "value": "1",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "sms_script",
+                  "value": "hi {name}, ini adalah pemberitahuan service kpb anda",
+                  "description": "isi dari sms kpb. ",
+                  "type": "text"
+                },
+                {
+                  "key": "call_script",
+                  "value": "",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "email_script",
+                  "value": "",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{url}}activity/create"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-b08c632a-db4b-46c1-b52d-29eae7a30d5b",
+          "name": "Detail",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{url}}activity/detail?id=1",
+              "host": [
+                "{{url}}activity"
+              ],
+              "path": [
+                "detail"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-086511fd-036b-4b0f-815f-ce92c6825e6c",
+          "name": "List",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "{{url}}activity"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "2460438-62721771-6994-4b7d-827a-cbfcabbbf521",
+      "name": "Branch",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2460438-28d2635e-a8df-4d4e-805b-9cb8462d2aac",
+          "name": "List",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "{{url}}branch",
+            "description": "Get List BMS branch"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "2460438-535126a5-9398-4b80-b4f7-a243b1ebedbe",
+      "name": "Common",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2460438-909772f8-82dc-485a-b797-c6e54e46e095",
+          "name": "Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "{{url}}commonbms/product",
+            "description": "Endpoint for get all honda product from bms database."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "51f112ef-f5f7-4ed6-9832-9c19cb76bfda",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "9098bd1c-2876-4d0d-ac34-65cd76ec3c7b",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
