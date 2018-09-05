@@ -243,12 +243,12 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{url}}contactplanner/previewTarget?plan_id=1",
+              "raw": "{{url}}contactplanner/preview_target?plan_id=1",
               "host": [
                 "{{url}}contactplanner"
               ],
               "path": [
-                "previewTarget"
+                "preview_target"
               ],
               "query": [
                 {
@@ -627,6 +627,63 @@
             "body": {},
             "url": "{{url}}commonbms/product",
             "description": "Endpoint for get all honda product from bms database."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "2460438-a47e0deb-6826-4b29-a298-ded8e7d8c1db",
+      "name": "TargetPlan",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2460438-3fad3b9d-3062-40cc-9f3c-a6f21c0c01d6",
+          "name": "List",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "{{url}}targetplan",
+            "description": "List of api to get and manipulate contact plan target. all message sent will be in contact plan target item\t"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-1fea0de0-39b4-401a-b009-6c42f4b01956",
+          "name": "Detail",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{url}}targetplan/detail?id=1",
+              "host": [
+                "{{url}}targetplan"
+              ],
+              "path": [
+                "detail"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "equals": true
+                }
+              ]
+            }
           },
           "response": []
         }
