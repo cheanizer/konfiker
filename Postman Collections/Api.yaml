@@ -688,6 +688,43 @@
           "response": []
         }
       ]
+    },
+    {
+      "_postman_id": "2460438-07cc7d14-14af-4e2f-a4ad-b545c3447235",
+      "name": "TargetPlanItem",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "2460438-58212479-b4ab-42db-89fe-38ffffae8ce5",
+          "name": "List",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{url}}planitem?contact_plan_id=1",
+              "host": [
+                "{{url}}planitem"
+              ],
+              "query": [
+                {
+                  "key": "contact_plan_id",
+                  "value": "1",
+                  "equals": true,
+                  "description": "id contact plan"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [
