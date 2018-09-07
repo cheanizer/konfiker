@@ -349,7 +349,19 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": "{{url}}contactplanner"
+            "url": {
+              "raw": "{{url}}contactplanner?include=branch",
+              "host": [
+                "{{url}}contactplanner"
+              ],
+              "query": [
+                {
+                  "key": "include",
+                  "value": "branch",
+                  "equals": true
+                }
+              ]
+            }
           },
           "response": []
         },
@@ -470,6 +482,72 @@
               ]
             },
             "url": "{{url}}contactplanner/update"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-de371b9f-2a32-4817-b2e1-5e6e2fa30d49",
+          "name": "Preview Template",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "template",
+                  "value": "hai {name}",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{url}}contactplanner/preview_template"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-77d5b24e-4db7-42d9-833e-a95d74c120f3",
+          "name": "Detail",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{url}}contactplanner/detail?id=2&includes=branch",
+              "host": [
+                "{{url}}contactplanner"
+              ],
+              "path": [
+                "detail"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "2",
+                  "equals": true,
+                  "description": "Id dari contact plan detail"
+                },
+                {
+                  "key": "includes",
+                  "value": "branch",
+                  "equals": true,
+                  "description": "table yang bisa di include"
+                }
+              ]
+            }
           },
           "response": []
         }
@@ -650,7 +728,20 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": "{{url}}targetplan",
+            "url": {
+              "raw": "{{url}}targetplan?includes=contact_planner",
+              "host": [
+                "{{url}}targetplan"
+              ],
+              "query": [
+                {
+                  "key": "includes",
+                  "value": "contact_planner",
+                  "equals": true,
+                  "description": "data externa table yang di include"
+                }
+              ]
+            },
             "description": "List of api to get and manipulate contact plan target. all message sent will be in contact plan target item\t"
           },
           "response": []
@@ -708,16 +799,20 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{url}}planitem?contact_plan_id=1",
+              "raw": "{{url}}planitem?contact_plan_id=12&includes=contact_planner",
               "host": [
                 "{{url}}planitem"
               ],
               "query": [
                 {
                   "key": "contact_plan_id",
-                  "value": "1",
-                  "equals": true,
-                  "description": "id contact plan"
+                  "value": "12",
+                  "equals": true
+                },
+                {
+                  "key": "includes",
+                  "value": "contact_planner",
+                  "equals": true
                 }
               ]
             }
