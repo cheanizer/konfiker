@@ -818,6 +818,33 @@
             }
           },
           "response": []
+        },
+        {
+          "_postman_id": "2460438-798fda4c-2329-4751-9a06-b6ee306deed4",
+          "name": "SendSms",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "id",
+                  "value": "4455",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{url}}planitem/sendSms"
+          },
+          "response": []
         }
       ]
     }
