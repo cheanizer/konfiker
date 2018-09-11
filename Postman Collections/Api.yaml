@@ -136,24 +136,7 @@
             "method": "GET",
             "header": [],
             "body": {},
-            "url": {
-              "raw": "{{url}}customerbms?page=1&data_sumber=h2",
-              "host": [
-                "{{url}}customerbms"
-              ],
-              "query": [
-                {
-                  "key": "page",
-                  "value": "1",
-                  "equals": true
-                },
-                {
-                  "key": "data_sumber",
-                  "value": "h2",
-                  "equals": true
-                }
-              ]
-            }
+            "url": "{{url}}customerbms"
           },
           "response": []
         },
@@ -548,6 +531,32 @@
                 }
               ]
             }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-16f55ff1-1c6f-4471-b0ee-78d4a63e72cb",
+          "name": "Deactivate",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "id",
+                  "value": "1",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{url}}contactplanner/deactivate"
           },
           "response": []
         }
