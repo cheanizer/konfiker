@@ -226,7 +226,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{url}}contactplanner/preview_target?plan_id=1",
+              "raw": "{{url}}contactplanner/preview_target?plan_id=6",
               "host": [
                 "{{url}}contactplanner"
               ],
@@ -236,7 +236,7 @@
               "query": [
                 {
                   "key": "plan_id",
-                  "value": "1",
+                  "value": "6",
                   "equals": true
                 }
               ]
@@ -333,14 +333,19 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{url}}contactplanner?include=branch",
+              "raw": "{{url}}contactplanner?includes=branch&search=plan",
               "host": [
                 "{{url}}contactplanner"
               ],
               "query": [
                 {
-                  "key": "include",
+                  "key": "includes",
                   "value": "branch",
+                  "equals": true
+                },
+                {
+                  "key": "search",
+                  "value": "plan",
                   "equals": true
                 }
               ]
@@ -559,6 +564,66 @@
             "url": "{{url}}contactplanner/deactivate"
           },
           "response": []
+        },
+        {
+          "_postman_id": "2460438-fcbf2fc7-c4cf-4133-bd4a-c11a7c4eed1c",
+          "name": "Set Auto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "id",
+                  "value": "6",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "automatic",
+                  "value": "1",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{url}}contactplanner/setauto"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "2460438-5e04a323-f7c4-4345-92f1-259654a1ce82",
+          "name": "Generate",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "{{token}}"
+              }
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "plan_id",
+                  "value": "7",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{url}}contactplanner/generate"
+          },
+          "response": []
         }
       ]
     },
@@ -738,7 +803,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{url}}targetplan?includes=contact_planner",
+              "raw": "{{url}}targetplan?includes=contact_planner&search=Contact",
               "host": [
                 "{{url}}targetplan"
               ],
@@ -748,6 +813,11 @@
                   "value": "contact_planner",
                   "equals": true,
                   "description": "data externa table yang di include"
+                },
+                {
+                  "key": "search",
+                  "value": "Contact",
+                  "equals": true
                 }
               ]
             },
@@ -769,7 +839,7 @@
             "header": [],
             "body": {},
             "url": {
-              "raw": "{{url}}targetplan/detail?id=1",
+              "raw": "{{url}}targetplan/detail?id=1&includes=contact_planner",
               "host": [
                 "{{url}}targetplan"
               ],
@@ -780,6 +850,11 @@
                 {
                   "key": "id",
                   "value": "1",
+                  "equals": true
+                },
+                {
+                  "key": "includes",
+                  "value": "contact_planner",
                   "equals": true
                 }
               ]
@@ -845,7 +920,7 @@
               "formdata": [
                 {
                   "key": "id",
-                  "value": "4455",
+                  "value": "4254",
                   "description": "",
                   "type": "text"
                 }
